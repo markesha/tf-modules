@@ -31,6 +31,7 @@ resource "aws_elb" "example" {
     unhealthy_threshold = 2
   }
 }
+
 resource "aws_autoscaling_group" "example" {
   availability_zones = ["${data.aws_availability_zones.all.names}"]
   launch_configuration = "${aws_launch_configuration.example.id}"
@@ -48,6 +49,7 @@ resource "aws_autoscaling_group" "example" {
     propagate_at_launch = true
   }
 }
+
 resource "aws_security_group" "instance" {
   name = "${var.cluster_name}-instance"
 
@@ -55,6 +57,7 @@ resource "aws_security_group" "instance" {
     create_before_destroy = true
   }
 }
+
 resource "aws_security_group_rule" "allow_custom" {
   from_port = "${var.server_port}"
   protocol = "tcp"
@@ -97,7 +100,6 @@ data "terraform_remote_state" "db" {
     region = "us-east-1"
   }
 }
-
 
 data "template_file" "user_data" {
   template = "${file("${path.module}/user-data.sh")}"
