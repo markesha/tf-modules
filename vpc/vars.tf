@@ -8,7 +8,7 @@ variable "region" {
   default = "eu-central-1"
 }
 
-variable "range" {
+variable "cidr_block" {
   description = "CIDR range for vpc"
   default = "10.0.0.0/16"
 }
