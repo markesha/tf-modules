@@ -1,5 +1,5 @@
 variable "env" {
-  description = "The env type (prod/stage/etc)"
+  description = "The env type (prod/stage/dev/etc)"
   default = "dev"
 }
 
